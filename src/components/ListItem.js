@@ -5,11 +5,20 @@ import
 { Text, StyleSheet,
   TouchableWithoutFeedback,
   View,
-  LayoutAnimation
+  LayoutAnimation,
+  Platform,
+  UIManager
 } from 'react-native';
 import * as actions  from '../actions';
 
 class ListItem extends Component {
+
+  constructor(){
+    super();
+    if (Platform.OS === 'android'){
+      UIManager.setLayoutAnimationEnabledExperimental &&   UIManager.setLayoutAnimationEnabledExperimental(true);
+    }
+  }
 
   componentWillUpdate(){
     LayoutAnimation.spring()
